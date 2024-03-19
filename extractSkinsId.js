@@ -22,7 +22,7 @@ const filteredUrls = urls
 
 const jsonString = `{ ${filteredUrls.join(', ')} }`;
 
-fs.writeFile('extractedIds.json', jsonString, 'utf8', (err) => {
+fs.writeFile('output2.json', jsonString, 'utf8', (err) => {
   if (err) {
     console.error('Error writing to file:', err);
   } else {
