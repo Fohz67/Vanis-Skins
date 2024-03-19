@@ -1,21 +1,33 @@
-const fs = require('fs');
+document.addEventListener("DOMContentLoaded", function () {
+    const imageList = {PASTE HERE THE CONTENT OF OUTPUT2.JSON};
 
-const urls = [PASTE HERE THE CONTENT OF OUTPUT.JSON];
-
-const filteredUrls = urls
-  .filter(url => url.startsWith("https://skins.vanis.io/s/"))
-  .map(url => {
-    const key = url.replace(/^https:\/\/skins\.vanis\.io\/s\//, '');
-    const cleanedKey = key.replace(/[^a-zA-Z0-9]/g, '');
-    return `"${cleanedKey}": "${url}"`;
-  });
-
-const jsonString = `{ ${filteredUrls.join(', ')} }`;
-
-fs.writeFile('output2.json', jsonString, 'utf8', (err) => {
-  if (err) {
-    console.error('Erreur lors de l\'écriture du fichier :', err);
-  } else {
-    console.log('Le fichier output2.json a été créé avec succès.');
-  }
+    displayImages(Object.values(imageList));
 });
+
+async function displayImages(imageList) {
+    const imageContainer = document.getElementById('imageContainer');
+    let i = 0;
+
+    for (const imagePath of imageList) {
+        await new Promise(resolve => {
+            const img = new Image();
+            img.style.width = "100px";
+            img.style.height = "100px";
+            img.onload = () => {
+                i++;
+                resolve();
+            };
+            img.onerror = () => {
+                console.error(`Erreur de chargement de l'image: ${imagePath}`);
+                resolve();
+            };
+            img.src = imagePath;
+            imageContainer.appendChild(img);
+        });
+
+        await new Promise(resolve => setTimeout(resolve, 10));
+    }
+
+    document.title = i.toString();
+}
+
