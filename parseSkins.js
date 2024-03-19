@@ -33,7 +33,7 @@ for (const key in jsonData) {
 
 const outputJson = JSON.stringify(allSkins, null, 2);
 
-fs.writeFile('skinsParsed.json', outputJson, 'utf8', (err) => {
+fs.writeFile('output.json', outputJson, 'utf8', (err) => {
     if (err) {
         console.error('Error writing to file:', err);
     } else {
