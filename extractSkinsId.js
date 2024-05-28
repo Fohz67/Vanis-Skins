@@ -1,12 +1,12 @@
 const fs = require('fs');
-
 const filePath = process.argv[2];
 
 let urls = [];
+
 try {
     const data = fs.readFileSync(filePath, 'utf8');
 
-  urls = JSON.parse(data);
+    urls = JSON.parse(data);
 } catch (error) {
     console.error('Error reading or parsing the file:', error);
     return;
@@ -17,6 +17,7 @@ const filteredUrls = urls
   .map(url => {
     const key = url.replace(/^https:\/\/skins\.vanis\.io\/s\//, '');
     const cleanedKey = key.replace(/[^a-zA-Z0-9]/g, '');
+
     return `"${cleanedKey}": "${url}"`;
   });
 
