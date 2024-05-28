@@ -11,17 +11,21 @@ async function displayImages(imageList) {
     for (const imagePath of imageList) {
         await new Promise(resolve => {
             const img = new Image();
+            
             img.style.width = "100px";
             img.style.height = "100px";
+            img.src = imagePath;
+
             img.onload = () => {
                 i++;
                 resolve();
             };
+            
             img.onerror = () => {
                 console.error(`Erreur de chargement de l'image: ${imagePath}`);
                 resolve();
             };
-            img.src = imagePath;
+                        
             imageContainer.appendChild(img);
         });
 
