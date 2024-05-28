@@ -3,7 +3,7 @@ A shitty repository for people who want to steal skins.
 
 ## Description
 
-2 programs that allow you to extract a large quantity of skins, is only useful in Fohz unless you have huge quantities of skins.
+2 programs that allow you to extract a large quantity of skins, is only useful for Fohz unless you have huge quantities of skins.
 A folder containing an HTML file to access all the skins on a web page.
 And finally a folder containing .JSON skin backup files
 
